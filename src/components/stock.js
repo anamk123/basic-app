@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 function Stock(props){
-    const apiKey = 'RPTRZ2CVVWM6IQUW';
+    const apiKey = process.env.REACT_APP_STOCK_KEY;
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState(null);
     const [text,  setTextState] = React.useState("");

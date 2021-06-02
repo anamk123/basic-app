@@ -9,7 +9,7 @@ import '../css/weather.css';
 function Weather(props){
     const [data, setData] = useState(null);
     const [text, setText] = useState("");
-    const apiKey = 'a68dfe3014b8884bb4cf8228c0708e6f';
+    const apiKey = process.env.REACT_APP_WEATHER_KEY;
     const url = 'https://api.openweathermap.org/data/2.5/weather?q='+text+'&units=metric&appid='+apiKey;
     
     const userSearch = e  => (

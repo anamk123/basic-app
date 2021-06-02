@@ -7,9 +7,13 @@ import Stock from './components/stock';
 import Weather from './components/weather';
 import Add from './components/addUser';
 import UsersList from './components/userList';
-
-
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Spotify from './components/spotify';
+
+require('dotenv').config();
+
+
+
 
 
 function App() {
@@ -28,6 +32,8 @@ function App() {
       <Route component={TestingStates} path="/test-states" />
       <Route component={Stock} path="/stocks" />
       <Route component={Weather} path="/weather" />
+      <Route component={Spotify} path="/spotify" />
+
 
 
 

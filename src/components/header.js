@@ -43,6 +43,8 @@ function Header(props) {
             <Button color="inherit"> <Link to="/test-states" className={classes.link}>Test States</Link> </Button>
             <Button color="inherit"> <Link to="/stocks" className={classes.link}>Stocks</Link> </Button>
             <Button color="inherit"> <Link to="/weather" className={classes.link}>weather</Link> </Button>
+            <Button color="inherit"> <Link to="/users" className={classes.link}>user</Link> </Button>
+
 
 
             </Toolbar>

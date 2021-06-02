@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const PORT = 4000;
 const userRoutes = express.Router();
 let User = require('./user.model');
+let Playlist = require('./playlist.model');
 
 
 
@@ -29,6 +30,16 @@ userRoutes.route('/').get(function(req, res) {
     });
 });
 
+userRoutes.route('/').get(function(req, res) {
+    Playlist.find(function(err, playlist) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.json(playlist);
+        }
+    });
+});
+
 userRoutes.route('/:id').get(function(req, res) {
     let id = req.params.id;
     User.findById(id, function(err, user) {
@@ -36,23 +47,23 @@ userRoutes.route('/:id').get(function(req, res) {
     });
 });
 
-userRoutes.route('/update/:id').post(function(req, res) {
-    User.findById(req.params.id, function(err, user) {
-        if (!user)
-            res.status(404).send("data is not found");
-        else
-        user.user_name = req.body.user_name;
-        user.user_password = req.body.user_password;
+// userRoutes.route('/update/:id').post(function(req, res) {
+//     User.findById(req.params.id, function(err, user) {
+//         if (!user)
+//             res.status(404).send("data is not found");
+//         else
+//         user.user_name = req.body.user_name;
+//         user.user_password = req.body.user_password;
         
 
-        user.save().then(user => {
-                res.json('User updated!');
-            })
-            .catch(err => {
-                res.status(400).send("Update not possible");
-            });
-    });
-});
+//         user.save().then(user => {
+//                 res.json('User updated!');
+//             })
+//             .catch(err => {
+//                 res.status(400).send("Update not possible");
+//             });
+//     });
+// });
 
 userRoutes.route('/add').post(function(req, res) {
     let user = new User(req.body);
@@ -65,7 +76,19 @@ userRoutes.route('/add').post(function(req, res) {
         });
 });
 
+userRoutes.route('/add').post(function(req, res) {
+    let playlist = new Playlist(req.body);
+    playlist.save()
+        .then(playlist => {
+            res.status(200).json({'playlist': 'playlist added successfully'});
+        })
+        .catch(err => {
+            res.status(400).send('adding new playlist failed');
+        });
+});
+
 app.use('/user', userRoutes);
+
 
 app.listen(PORT, function() {
     console.log("Server is running on Port: " + PORT);
