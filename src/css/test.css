@@ -1,0 +1,9 @@
+.stock-container{
+
+    padding: 10px;
+    background-color: green;
+    font-size: 13px;
+    margin-top: 5px;;
+    text-align: left;
+    width: 100%;
+}

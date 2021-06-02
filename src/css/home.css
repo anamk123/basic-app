@@ -1,0 +1,9 @@
+.mainContent{
+
+    background-color: black;
+    width: 100%;
+}
+
+.MuiContainer-root{
+    padding: 0 !important;
+}
